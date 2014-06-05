@@ -9,6 +9,7 @@ START = "start"
 ALPHA = "alphabet"
 TRANS = "transitions"
 ACCEPT = "accept"
+INPUTS = "inputs"
 
 class parse():
     dfa = {}
@@ -25,6 +26,7 @@ class parse():
         self.dfa[TRANS] = data[TRANS] 
         self.dfa[START] = data[START]
         self.dfa[ACCEPT] = data[ACCEPT]
+        self.dfa[INPUTS] = data[INPUTS]
         
     def get_dfa(self):
         return self.dfa
