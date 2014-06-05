@@ -38,11 +38,11 @@ class dfa:
 
         for char in input_str:
             if current_state not in self.transitions:
-                print str(current_state) + " is not a state in the DFA."
+                print "Invalid DFA: " + str(current_state) + " is not a state in the DFA."
                 return
 
             if char not in self.transitions[current_state]:
-                print str(char) + " does not transition to a state in the DFA."
+                print "Invalid DFA: " + str(char) + " does not transition to a state in the DFA."
                 return
 
             new_state = self.transitions[current_state][char]
