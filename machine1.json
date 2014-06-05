@@ -1,0 +1,25 @@
+{
+  "description":"This DFA accepts strings that contain the substring 'aba'.",
+  "states": ["q1","q2","q3","q4"],
+  "alphabet": ["a","b"],
+  "transitions": {
+    "q1": {
+      "a": "q2",
+      "b": "q1"
+    },
+    "q2": {
+      "a": "q2",
+      "b": "q3"
+    },
+    "q3": {
+      "a": "q4",
+      "b": "q1"
+    },
+    "q4": {
+      "a": "q4",
+      "b": "q4"
+    }
+  },
+  "start": "q1",
+  "accept": ["q4"]
+}
