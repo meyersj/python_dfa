@@ -21,5 +21,6 @@
     }
   },
   "start": "q1",
-  "accept": ["q4"]
+  "accept": ["q4"],
+  "inputs": ["aaaaaaa", "bbbbbbbaa", "ababaaa", "abababa"]
 }
