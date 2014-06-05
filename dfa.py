@@ -1,3 +1,11 @@
+DESC = "description"
+STATE = "states"
+START = "start"
+ALPHA = "alphabet"
+TRANS = "transitions"
+ACCEPT = "accept"
+INPUTS = "inputs"
+
 class dfa:
     states = []
     description = ""
@@ -5,13 +13,17 @@ class dfa:
     accept_states = []
     # {State : {input : newState}}
     transitions = {"": {"" : ""}}
-
-    def dfa(self, states, description, start_state, accept_states, transitions):
-        self.states = states
-        self.description = description
-        self.start_state = start_state
-        self.accept_states = accept_states
-        self.transitions = transitions
+    
+    def dfa(self, file_name):
+        parse = parse(file_name)
+        dfa = parse.get_dfa()
+        self.states = dfa[STATES]
+        self.start_state = dfa[START]
+        self.accept_states = dfa[ACCEPT]
+        self.transitions = dfa[TRANS]
+        
+        for input_str in dfa[INPUTS]
+            run_dfa(input_str)
 
     def run_dfa(input_str):
         current_state = self.start_state
