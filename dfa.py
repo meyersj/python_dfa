@@ -1,10 +1,14 @@
 class dfa:
+    states = []
+    description = ""
     start_state = ""
     accept_states = []
     # {State : {input : newState}}
     transitions = {"": {"" : ""}}
 
-    def dfa(self, start_state, accept_states, transitions):
+    def dfa(self, states, description, start_state, accept_states, transitions):
+        self.states = states
+        self.description = description
         self.start_state = start_state
         self.accept_states = accept_states
         self.transitions = transitions
