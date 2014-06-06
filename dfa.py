@@ -9,7 +9,7 @@ ACCEPT = "accept"
 INPUTS = "inputs"
 
 
-class dfa:
+class DFA:
     states = []
     description = ""
     start_state = ""
@@ -56,8 +56,13 @@ class dfa:
 
 
 if __name__ == "__main__":
-    dfa, input_strings = dfa("machine1.json").get_dfa()
+    dfa, input_strings = DFA("machine1.json").get_dfa()
 
     for s in input_strings:
     	dfa.run_dfa(s)
+
+    dfa, input_strings = DFA("machine2.json").get_dfa()
+
+    for s in input_strings:
+        dfa.run_dfa(s)
 
