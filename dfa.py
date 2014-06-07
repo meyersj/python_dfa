@@ -11,6 +11,7 @@ INPUTS = "inputs"
 
 class DFA:
     states = []
+    alphabet = []
     description = ""
     start_state = ""
     accept_states = []
@@ -21,6 +22,7 @@ class DFA:
     def __init__(self, file_name):
         dfa = json.load(open(file_name))
         self.states = dfa[STATE]
+        self.alphabet = dfa[ALPHA]
         self.description = dfa[DESC]
         self.start_state = dfa[START]
         self.accept_states = dfa[ACCEPT]
@@ -33,26 +35,26 @@ class DFA:
     def run_dfa(self, input_str):
         current_state = self.start_state
         print "Running the DFA with the description:"
-        print str(self.description)
-        print "On the input: " + str(input_str)
+        print self.description
+        print "On the input: " + input_str
 
         for char in input_str:
             if current_state not in self.transitions:
-                print "Invalid DFA: " + str(current_state) + " is not a state in the DFA."
+                print "Invalid DFA: " + current_state + " is not a state in the DFA."
                 return
 
             if char not in self.transitions[current_state]:
-                print "Invalid DFA: " + str(char) + " does not transition to a state in the DFA."
+                print "Invalid DFA: " + char + " does not transition to a state in the DFA."
                 return
 
             new_state = self.transitions[current_state][char]
-            print "Moving from state: " + str(current_state) + " to State: " + str(new_state) + " on input: " + str(char)
+            print "Moving from state: " + current_state + " to State: " + new_state + " on input: " + char
             current_state = new_state
 
         if any(current_state in s for s in self.accept_states):
-            print "The DFA ACCEPTS the input: " + str(input_str) + "\n"
+            print "The DFA ACCEPTS the input: " + input_str + "\n"
         else:
-            print "The DFA REJECTS the input: " + str(input_str) + "\n"
+            print "The DFA REJECTS the input: " + input_str + "\n"
 
 
 if __name__ == "__main__":
