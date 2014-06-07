@@ -1,3 +1,37 @@
+"""
+Authors:
+  
+  Jeffrey Meyers
+  Ruben Niculcea
+
+Date:
+  
+  June 7, 2014
+
+Purpose:
+  
+  Extra credit assignment for CS 311 - Computational Structures
+  taught by Daniel Leblanc at Portland State University.
+
+  Implement a program takes as input an encoding of a DFA machine and a string
+  and states whether the string is a member of the language defined
+  by that machine.
+
+Description:
+  
+  1. The DFA class is intialized with a path to an encoding of a DFA as JSON.
+
+  2. The JSON is parsed into the 5 parts required to define a DFA in addition
+  to a description of the machine and an array containing test inputs.
+
+  3. The machine and test inputs are returned after parsing.
+
+  4. The machine runs on each input and prints the transitions taken
+  and after all characters are consumed prints whether it is in an ACCEPT
+  state.
+
+"""
+
 import json
 
 DESC = "description"
@@ -10,14 +44,14 @@ INPUTS = "inputs"
 
 
 class DFA:
-    states = []
-    alphabet = []
-    description = ""
-    start_state = ""
-    accept_states = []
+    states = None
+    alphabet = None
+    description = None
+    start_state = None
+    accept_states = None
     # {State : {input : newState}}
-    transitions = {"": {"" : ""}}
-    input_strings = []
+    transitions = None
+    input_strings = None 
     
     def __init__(self, file_name):
         dfa = json.load(open(file_name))
@@ -58,12 +92,21 @@ class DFA:
 
 
 if __name__ == "__main__":
+    
+    # machine 1 accepts substrings 'aba'
     dfa, input_strings = DFA("machine1.json").get_dfa()
 
     for s in input_strings:
     	dfa.run_dfa(s)
 
+    # machine 2 accepts binary multiples of 3
     dfa, input_strings = DFA("machine2.json").get_dfa()
+
+    for s in input_strings:
+        dfa.run_dfa(s)
+
+    # machine 3 accepts the substrings 'jeff' or 'ruben'
+    dfa, input_strings = DFA("machine3.json").get_dfa()
 
     for s in input_strings:
         dfa.run_dfa(s)
