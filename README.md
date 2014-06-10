@@ -1,10 +1,6 @@
 python_dfa
 ==========
 
-simple dfa implementation with python
+Simple DFA implementation written in Python.
 
-Written as extra credit for PSU CS311 as the final will not be kind to us.
-
-
-TODO:
-- Machine that recognizes jeff or ruben's name in a string
+Written as extra credit for PSU's CS311, as the final will not be kind to us.
